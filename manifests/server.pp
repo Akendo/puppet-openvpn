@@ -5,6 +5,10 @@
     #
     # === Parameters
     #
+    # [*dev*]
+    #  Name of the virtual network device.
+    #  Default: tun0
+    #
     # [*proto*]
     #   IPv4 udp or tcp
     #   IPv6 udp6 or tcp6
@@ -15,6 +19,18 @@
     #   ipv6addr/bits
     #   Enabling IPv6 helper directive of OpenVPN and will allocate given
     #   address for server and client. Will bind to first IP of the network.
+    #
+    # [*route*]
+    #   Allows to set additional route to the routing table of OpenVPN.
+    #   Default is empty. Can be one string like: 'fc00:dead::1/65'
+    #   For more then one element place as arry:
+    #   ['172.17.28.0 255.255.255.0','172.17.27.0 255.255.255.0']
+    #
+    # [*push*]
+    #   Push additional route(s) to the client which he will add to his routing table.
+    #   Default is empty. Will take single string or a array:
+    #   'route 172.17.27.0 255.255.255.0'
+    #   ['"route-ipv6 2000::/3"','route 172.17.27.0 255.255.255.0','route 172.17.28.0 255.255.255.0']
     #
     #
     # === Examples
