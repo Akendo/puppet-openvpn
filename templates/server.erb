@@ -1,6 +1,6 @@
 mode server
 port <%= scope.lookupvar('port') %>
-proto <%= scope.lookupvar('proto') %>-server
+proto <%= scope.lookupvar('proto') %>
 dev <%= scope.lookupvar('dev') %>
 ca /etc/openvpn/<%= scope.lookupvar('name') %>/<%= scope.lookupvar('ca') %>
 cert /etc/openvpn/<%= scope.lookupvar('name') %>/<%= scope.lookupvar('crt') %>
@@ -58,7 +58,13 @@ push <%= pusher %>
 <% end -%>
 <% end -%>
 <% if :undef != scope.lookupvar('route') -%>
+<% if route.size == 0 then -%>
 route <%= scope.lookupvar('route') %>
+<% else -%>
+<% route.each do |routes| -%>
+route <%= routes %>
+<% end -%>
+<% end -%>
 <% end -%>
 <% if :undef != scope.lookupvar('topology') -%>
 topology <%= scope.lookupvar('topology') %>
